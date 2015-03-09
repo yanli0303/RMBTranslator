@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Js RMB Translator</title>
+    <style type="text/css">
+    input { line-height: 30px; letter-spacing: 1px; margin: 0 5px;}
+    input[type=text] { border: solid 1px gray; width: 250px; height: 30px; font-size: 20px;}
+    input[type=button] { border: double 3px gray; line-height: 30px; height: 35px; width: 150px; background-color: Silver;}
+    </style>
+
+    <script type="text/javascript" src="RMBTranslator.js"></script>
+    <script language="javascript" type="text/javascript">
+        function DoTranslate() {
+            $('rmb').innerHTML = RMB.Translate($('amount').value); 
+            $('your').innerHTML = cmycurd($('amount').value);
+        }
+    
+    </script>
+
+</head>
+<body>
+    <div>
+        <pre>
+1. 汉字大写金额数字，一律用正楷字或行书字书写，如壹、贰、叁、肆、伍、陆、柒、捌、玖、拾、佰、仟、万、亿、圆（元）、角、分、零、整（正）
+2. 大写金额数字到元或角为止的，在“元”或“角”字之后应写“整”或“正”字；大写金额数字有分的，分字后面不写“整”字。
+3. 大写金额数字前未印有人民币字样的，应加填“人民币”三字，“人民币”三字与金额数字之间不得留有空白。
+4. 阿拉伯金额数字中间有“０”时，汉字大写金额要写“零”字，如¥１０１．５０，汉字大写金额应写成人民币壹佰零壹圆伍角整。
+5. 阿拉伯金额数字中间连续有几个“０”时，汉字大写金额中可以只写一个“零”字，如￥１，００４．５６，汉字大写金额应写成人民币壹仟零肆圆伍角陆分。
+6. 阿拉伯金额数字元位是“０”，或数字中间连续有几个“０”，元位也是“０”，但角位不是“０”时，汉字大写金额可只写一个“零”字，也可不写“零”字，
+    如¥１，３２０．５６，汉字大写金额应写成人民币壹仟叁佰贰拾圆零伍角陆分，或人民币壹仟叁佰贰拾圆伍角陆分。
+    又如¥１，０００．５６，汉字大写金额应写成人民币壹仟圆零伍角陆分，或人民币壹仟圆伍角陆分。
+</pre>
+    </div>
+    输入金额:<br />
+    <input type="text" id="amount" value="1001101010011.1" /><input type="button" value="转换"
+        onclick="DoTranslate()" />
+    <br />
+    <br />
+    转换结果:<br />
+    <span style="font-weight: bold; color: Green; font-size: 20px;" id="rmb"></span>
+    <br />
+    <span id="your" style="font-weight: bold; color: Green; font-size: 20px;"></span>
+</body>
+</html>
